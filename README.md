@@ -1,2 +1,0 @@
-# provaportuguesnessamerda
-sla

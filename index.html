@@ -1,0 +1,743 @@
+cat > /home/claude/portugues2.html << 'HTMLEOF'
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Regência e Crase — Guia 9º Ano</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#040c08;
+  --s1:#07140e;
+  --s2:#0a1a13;
+  --s3:#0f2019;
+  --b1:#183024;
+  --b2:#214232;
+  --v:#1faa6b;
+  --vb:#35d68a;
+  --vc:rgba(31,170,107,.12);
+  --am:#d4a32a;
+  --amb:#f0c050;
+  --amc:rgba(212,163,42,.1);
+  --ro:#c96a58;
+  --roc:rgba(201,106,88,.1);
+  --az:#2a8fd4;
+  --azc:rgba(42,143,212,.1);
+  --tx:#cdddd5;
+  --mu:#476357;
+  --mu2:#7fa08d;
+  --wh:#f0f8f3;
+  --r:14px;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--tx);font-family:'Inter',sans-serif;font-size:15px;line-height:1.7;overflow-x:hidden}
+
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");pointer-events:none;z-index:0}
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:.75rem 2rem;display:flex;align-items:center;gap:.5rem;background:rgba(4,12,8,.85);backdrop-filter:blur(24px);border-bottom:1px solid rgba(31,170,107,.1)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:800;background:linear-gradient(135deg,var(--vb),var(--amb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-right:1rem;letter-spacing:-.02em}
+nav a{font-size:.7rem;font-weight:500;color:var(--mu);text-decoration:none;padding:.25rem .6rem;border-radius:6px;transition:.15s;white-space:nowrap}
+nav a:hover{color:var(--vb);background:var(--vc)}
+.nav-ai-btn{margin-left:auto;background:linear-gradient(135deg,var(--v),var(--am));color:#fff;border:none;border-radius:8px;padding:.36rem .85rem;font-size:.72rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;flex-shrink:0;letter-spacing:.02em}
+.nav-ai-btn:hover{opacity:.85;transform:translateY(-1px)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 6rem;position:relative;z-index:1}
+.hero-chip{display:inline-flex;align-items:center;gap:.4rem;background:var(--vc);border:1px solid rgba(53,214,138,.2);border-radius:999px;padding:.3rem .85rem;font-size:.65rem;font-weight:700;color:var(--vb);letter-spacing:.1em;text-transform:uppercase;margin-bottom:2rem;animation:fadeUp .5s ease both}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(3.2rem,10vw,7rem);font-weight:800;line-height:.92;color:var(--wh);letter-spacing:-.045em;margin-bottom:1.5rem;animation:fadeUp .5s .07s ease both}
+.hero h1 em{font-style:normal;background:linear-gradient(125deg,var(--vb) 0%,var(--amb) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{max-width:420px;color:var(--mu2);font-size:.95rem;margin-bottom:2rem;animation:fadeUp .5s .14s ease both;line-height:1.7;font-weight:400}
+.hero-badge{display:inline-flex;align-items:center;gap:.6rem;background:var(--s1);border:1px solid var(--b1);border-radius:10px;padding:.65rem 1rem;font-size:.8rem;margin-bottom:2.5rem;animation:fadeUp .5s .18s ease both;max-width:360px}
+.hero-badge-dot{width:6px;height:6px;border-radius:50%;background:var(--am);flex-shrink:0;animation:blink 2s infinite}
+.hero-badge p{color:var(--mu2);text-align:left;line-height:1.4}
+.hero-badge p strong{color:var(--tx)}
+.hero-actions{display:flex;gap:.65rem;flex-wrap:wrap;justify-content:center;animation:fadeUp .5s .22s ease both}
+.btn-p{background:linear-gradient(135deg,var(--v),var(--am));color:#fff;border:none;border-radius:10px;padding:.65rem 1.35rem;font-size:.82rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem;letter-spacing:.01em}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(31,170,107,.3)}
+.btn-g{background:transparent;color:var(--mu2);border:1px solid var(--b1);border-radius:10px;padding:.65rem 1.35rem;font-size:.82rem;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s;text-decoration:none;display:inline-flex;align-items:center;gap:.4rem}
+.btn-g:hover{background:var(--s1);color:var(--tx);border-color:var(--b2);transform:translateY(-2px)}
+.hero-stats{display:flex;gap:3rem;margin-top:3.5rem;animation:fadeUp .5s .28s ease both}
+.stat-n{font-family:'Syne',sans-serif;font-size:2.2rem;font-weight:800;background:linear-gradient(135deg,var(--vb),var(--amb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.stat-l{font-size:.6rem;color:var(--mu);text-transform:uppercase;letter-spacing:.14em;margin-top:.3rem}
+
+/* HERO VISUAL — frase animada */
+.hero-visual{margin:0 auto 2.5rem;animation:fadeUp .5s .11s ease both}
+.hv-frase{display:flex;align-items:baseline;gap:.4rem;justify-content:center;flex-wrap:wrap}
+.hv-w{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:800;color:rgba(255,255,255,.18);letter-spacing:-.02em}
+.hv-w.hl{color:var(--wh)}
+.hv-crase{font-family:'Syne',sans-serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:800;color:var(--vb);letter-spacing:-.02em;position:relative}
+.hv-crase::after{content:'A + A';position:absolute;top:-1.4rem;left:50%;transform:translateX(-50%);font-size:.55rem;font-weight:700;color:var(--am);letter-spacing:.08em;white-space:nowrap;font-family:'Inter',sans-serif;opacity:0;animation:popIn .4s .9s ease forwards}
+.hv-arrow{color:var(--mu);font-size:.9rem;opacity:.5}
+.hv-labels{display:flex;justify-content:center;gap:2rem;margin-top:.8rem;flex-wrap:wrap}
+.hv-label{font-size:.6rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--mu);padding:.2rem .6rem;background:var(--s1);border:1px solid var(--b1);border-radius:5px}
+.hv-label span{color:var(--vb);margin-right:.3rem}
+
+/* PAGE */
+.page{max-width:940px;margin:0 auto;padding:2rem 1.5rem 8rem;position:relative;z-index:1}
+
+/* SECTION HEADER */
+.sh{display:flex;align-items:center;gap:1rem;margin:5.5rem 0 2rem;padding-bottom:1.2rem;border-bottom:1px solid var(--b1)}
+.sh-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0}
+.sh-ey{font-size:.58rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mu);margin-bottom:.12rem}
+.sh-ti{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--wh);letter-spacing:-.025em}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+.rv.on{opacity:1;transform:none}
+
+/* CARD BASE */
+.card{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:1.4rem 1.5rem;position:relative;overflow:hidden;transition:border-color .2s,transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,0,0,.4)}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px}
+.cv::before{background:linear-gradient(90deg,var(--vb),transparent)}
+.cc::before{background:linear-gradient(90deg,var(--am),transparent)}
+.cr::before{background:linear-gradient(90deg,var(--ro),transparent)}
+.cgr::before{background:linear-gradient(90deg,var(--az),transparent)}
+.cv:hover{border-color:rgba(53,214,138,.25)}
+.cc:hover{border-color:rgba(212,163,42,.25)}
+.cr:hover{border-color:rgba(201,106,88,.25)}
+.cgr:hover{border-color:rgba(42,143,212,.25)}
+.ctag{display:inline-block;font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:.15rem .5rem;border-radius:4px;margin-bottom:.65rem}
+.tv{background:var(--vc);color:var(--vb)}
+.tc{background:var(--amc);color:var(--amb)}
+.tr{background:var(--roc);color:var(--ro)}
+.tgr{background:var(--azc);color:var(--az)}
+.taz{background:var(--azc);color:var(--az)}
+.card h3{font-size:.92rem;font-weight:700;color:var(--wh);margin-bottom:.5rem;display:flex;align-items:center;gap:.35rem}
+.card p,.card li{font-size:.85rem;color:var(--mu2);line-height:1.7}
+.card strong{color:var(--tx);font-weight:600}
+
+/* GRIDS */
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:.85rem}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.85rem}
+.g4{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:.85rem}
+
+/* VS ROW */
+.vs{display:grid;grid-template-columns:1fr 40px 1fr;gap:.75rem;align-items:center;background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:1.2rem 1.4rem;margin-bottom:.75rem;transition:border-color .2s}
+.vs:hover{border-color:var(--b2)}
+.vs-m{width:40px;height:40px;background:var(--s2);border:1px solid var(--b1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:800;color:var(--mu);flex-shrink:0}
+.vs-l{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+.vs-s p{font-size:.83rem;color:var(--mu2)}
+.vs-s p strong{color:var(--tx)}
+
+/* INFO BOXES */
+.ib{border-radius:9px;padding:.8rem 1rem;font-size:.81rem;margin:.65rem 0;display:flex;gap:.65rem;align-items:flex-start;border:1px solid}
+.ib-i{font-size:.95rem;flex-shrink:0;margin-top:.05rem}
+.ib p{line-height:1.6}
+.ib p strong{color:inherit}
+.tip{background:rgba(29,196,144,.08);border-color:rgba(29,196,144,.2);color:#2de0a7}
+.warn{background:rgba(212,163,42,.08);border-color:rgba(212,163,42,.2);color:var(--amb)}
+.note{background:rgba(31,170,107,.08);border-color:rgba(31,170,107,.2);color:var(--vb)}
+.fact{background:rgba(42,143,212,.08);border-color:rgba(42,143,212,.2);color:#70baf0}
+.errb{background:rgba(201,106,88,.08);border-color:rgba(201,106,88,.2);color:#e89080}
+
+/* FORMULA */
+.formula{background:rgba(53,214,138,.07);border:1px solid rgba(53,214,138,.2);border-radius:10px;padding:.85rem 1.2rem;text-align:center;font-family:'Syne',sans-serif;font-size:1.35rem;color:var(--vb);margin:1rem 0;letter-spacing:.03em}
+
+/* LAWS */
+.law{background:var(--s1);border:1px solid var(--b1);border-left:2px solid var(--v);border-radius:0 10px 10px 0;padding:.9rem 1.2rem;margin-bottom:.6rem}
+.law-n{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--vb);margin-bottom:.2rem}
+.law p{font-size:.85rem;color:var(--mu2)}
+.law p strong{color:var(--tx)}
+
+/* STEPS */
+.steps{list-style:none}
+.steps li{display:flex;gap:.75rem;padding:.75rem 0;border-bottom:1px solid var(--b1);align-items:flex-start;font-size:.85rem;color:var(--mu2)}
+.steps li:last-child{border-bottom:none;padding-bottom:0}
+.sn{width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.62rem;font-weight:800;flex-shrink:0;margin-top:.18rem}
+.steps li strong{color:var(--tx)}
+
+/* MINI CARDS (preposição) */
+.pcard{border-radius:12px;overflow:hidden;border:1px solid var(--b1);transition:transform .2s,box-shadow .2s}
+.pcard:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.ptop{height:56px;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;letter-spacing:.02em}
+.pbody{background:var(--s1);padding:.7rem .85rem}
+.pbody strong{font-size:.82rem;color:var(--wh);display:block;margin-bottom:.1rem}
+.pbody span{font-size:.72rem;color:var(--mu)}
+
+/* DIVIDER */
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--b1),transparent);margin:1rem 0}
+
+/* QUIZ */
+.quiz{background:var(--s1);border:1px solid var(--b1);border-radius:var(--r);padding:1.6rem;margin-top:1rem}
+.qprog{height:2px;background:var(--b1);border-radius:999px;margin-bottom:1.4rem;overflow:hidden}
+.qbar{height:100%;background:linear-gradient(90deg,var(--v),var(--am));border-radius:999px;transition:width .4s ease;width:0%}
+.qhead{display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;margin-bottom:1.1rem}
+.qq{font-size:.9rem;font-weight:600;color:var(--wh);flex:1;line-height:1.5}
+.qct{font-size:.68rem;color:var(--mu);white-space:nowrap;margin-top:.15rem}
+.qopts{display:flex;flex-direction:column;gap:.45rem}
+.qopt{background:var(--s2);border:1px solid var(--b1);border-radius:9px;padding:.65rem .95rem;cursor:pointer;font-size:.82rem;color:var(--mu2);transition:.15s;text-align:left;font-family:'Inter',sans-serif;width:100%}
+.qopt:hover{border-color:var(--v);color:var(--tx);background:rgba(31,170,107,.08)}
+.qopt.ok{border-color:rgba(29,196,144,.5);color:#2de0a7;background:rgba(29,196,144,.08)}
+.qopt.err{border-color:rgba(201,106,88,.5);color:#e89080;background:rgba(201,106,88,.08)}
+.qopt:disabled{cursor:default}
+.qfb{margin-top:.7rem;font-size:.81rem;padding:.65rem .95rem;border-radius:8px;display:none;line-height:1.55}
+.qfb.on{display:block}
+.qfb.ok{background:rgba(29,196,144,.08);color:#2de0a7;border:1px solid rgba(29,196,144,.2)}
+.qfb.err{background:rgba(201,106,88,.08);color:#e89080;border:1px solid rgba(201,106,88,.2)}
+.qnxt{display:none;margin-top:.7rem;background:var(--v);color:#fff;border:none;border-radius:8px;padding:.5rem 1rem;font-size:.78rem;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:.2s}
+.qnxt:hover{background:var(--vb)}
+.qnxt.on{display:inline-block}
+.qscore{font-size:.88rem;font-weight:700;color:var(--am);text-align:center;margin-top:1rem;display:none;padding:.75rem;background:var(--amc);border:1px solid rgba(212,163,42,.2);border-radius:8px}
+.qscore.on{display:block}
+
+/* CHAT FAB */
+.chat-fab{position:fixed;bottom:1.6rem;right:1.6rem;z-index:500;width:54px;height:54px;border-radius:50%;background:linear-gradient(135deg,var(--v),var(--am));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:0 6px 24px rgba(31,170,107,.4);transition:.22s;animation:fabPop .4s .5s cubic-bezier(.34,1.56,.64,1) both}
+.chat-fab:hover{transform:scale(1.1);box-shadow:0 10px 32px rgba(31,170,107,.5)}
+.chat-fab .fab-close{display:none}
+.chat-fab.open .fab-icon{display:none}
+.chat-fab.open .fab-close{display:block}
+.chat-panel{position:fixed;bottom:5rem;right:1.6rem;z-index:499;width:348px;max-width:calc(100vw - 3rem);background:var(--s1);border:1px solid var(--b2);border-radius:18px;box-shadow:0 20px 70px rgba(0,0,0,.65);display:flex;flex-direction:column;overflow:hidden;opacity:0;transform:translateY(16px) scale(.96);pointer-events:none;transition:.22s cubic-bezier(.4,0,.2,1);max-height:68vh}
+.chat-panel.open{opacity:1;transform:none;pointer-events:all}
+.chat-header{padding:.9rem 1.1rem;border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:.65rem;background:var(--s2);flex-shrink:0}
+.chat-avatar{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--v),var(--am));display:flex;align-items:center;justify-content:center;font-size:.95rem;flex-shrink:0}
+.chat-hinfo strong{font-size:.85rem;color:var(--wh);display:block}
+.chat-hinfo span{font-size:.68rem;color:var(--vb)}
+.chat-dot{width:6px;height:6px;border-radius:50%;background:var(--v);animation:blink 2s infinite;flex-shrink:0;margin-left:auto}
+.chat-msgs{flex:1;overflow-y:auto;padding:.9rem;display:flex;flex-direction:column;gap:.65rem;scrollbar-width:thin;scrollbar-color:var(--b2) transparent}
+.chat-msgs::-webkit-scrollbar{width:3px}
+.chat-msgs::-webkit-scrollbar-thumb{background:var(--b2);border-radius:999px}
+.msg{max-width:90%;font-size:.81rem;line-height:1.55;padding:.6rem .85rem;border-radius:13px;animation:msgIn .2s ease}
+.msg.bot{background:var(--s2);color:var(--tx);border-radius:13px 13px 13px 3px;align-self:flex-start;border:1px solid var(--b1)}
+.msg.user{background:linear-gradient(135deg,var(--v),#16744a);color:#fff;border-radius:13px 13px 3px 13px;align-self:flex-end}
+.msg.typing{color:var(--mu);font-style:italic}
+.chat-sug-wrap{padding:.4rem .9rem .65rem;display:flex;flex-wrap:wrap;gap:.35rem;flex-shrink:0}
+.sug{background:var(--s2);border:1px solid var(--b1);border-radius:999px;padding:.22rem .65rem;font-size:.68rem;color:var(--mu2);cursor:pointer;transition:.13s;font-family:'Inter',sans-serif}
+.sug:hover{border-color:var(--v);color:var(--vb)}
+.chat-inp-row{padding:.7rem .9rem;border-top:1px solid var(--b1);display:flex;gap:.45rem;flex-shrink:0;background:var(--s2)}
+.chat-inp{flex:1;background:var(--s3);border:1px solid var(--b1);border-radius:9px;padding:.5rem .8rem;color:var(--tx);font-size:.81rem;font-family:'Inter',sans-serif;outline:none;transition:.2s}
+.chat-inp:focus{border-color:var(--v)}
+.chat-inp::placeholder{color:var(--mu)}
+.chat-send{background:var(--v);border:none;border-radius:9px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s;flex-shrink:0}
+.chat-send:hover{background:var(--vb)}
+.chat-send svg{width:13px;height:13px;fill:#fff}
+.chat-pw{text-align:center;font-size:.58rem;color:var(--mu);padding:.35rem;flex-shrink:0}
+
+/* FOOTER */
+footer{border-top:1px solid var(--b1);padding:3rem 1.5rem 2rem;text-align:center;position:relative;z-index:1}
+.footer-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--vb),var(--amb));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:-.02em;margin-bottom:.4rem}
+.footer-sub{font-size:.72rem;color:var(--mu);margin-bottom:.25rem}
+.footer-made{font-size:.65rem;color:var(--mu);margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--b1)}
+
+/* ANIMATIONS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+@keyframes blink{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes fabPop{from{opacity:0;transform:scale(.4)}to{opacity:1;transform:scale(1)}}
+@keyframes msgIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+@keyframes popIn{from{opacity:0;transform:translateX(-50%) translateY(4px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+
+@media(max-width:560px){
+  .vs{grid-template-columns:1fr}.vs-m{display:none}
+  .sh-ti{font-size:1.25rem}
+  nav a{display:none}
+  .chat-panel{right:.7rem;width:calc(100vw - 1.4rem)}
+  .chat-fab{right:.7rem;bottom:.9rem}
+}
+</style>
+</head>
+<body>
+<canvas id="bg-canvas"></canvas>
+
+<nav>
+  <span class="nav-logo">pxl4r1z3d</span>
+  <a href="#termos">Termos</a>
+  <a href="#duplaregencia">Regência</a>
+  <a href="#regenciastop">Top</a>
+  <a href="#namorar">Macetes</a>
+  <a href="#crase">Crase</a>
+  <a href="#ouro">Resumo</a>
+  <a href="#quiz">Quiz</a>
+  <button class="nav-ai-btn" onclick="toggleChat()">✦ Tirar dúvida</button>
+</nav>
+
+<section class="hero">
+  <div class="hero-chip">✦ Português · Regência e Crase · 9º Ano</div>
+
+  <h1>REGÊNCIA<br><em>E CRASE</em></h1>
+
+  <p class="hero-sub">Guia direto ao ponto — verbos de dupla regência, macetes de crase e tudo que cai na prova.</p>
+
+  <!-- VISUAL LIMPO: frase com crase destacada -->
+  <div class="hero-visual">
+    <div class="hv-frase">
+      <span class="hv-w hl">Fui</span>
+      <span class="hv-crase">à</span>
+      <span class="hv-w hl">escola</span>
+    </div>
+    <div class="hv-labels">
+      <span class="hv-label"><span>→</span>regente</span>
+      <span class="hv-label"><span style="color:var(--am)">+</span>crase</span>
+      <span class="hv-label"><span>→</span>regido</span>
+    </div>
+  </div>
+
+  <div class="hero-badge">
+    <div class="hero-badge-dot"></div>
+    <p><strong>PCG · 9º ano</strong> — Revisão para a avaliação do dia <strong>16/06</strong></p>
+  </div>
+
+  <div class="hero-actions">
+    <a href="#termos" class="btn-p">📖 Começar a estudar</a>
+    <button class="btn-g" onclick="toggleChat()">✦ Tirar dúvida com IA</button>
+  </div>
+
+  <div class="hero-stats">
+    <div><div class="stat-n">11</div><div class="stat-l">Verbos</div></div>
+    <div><div class="stat-n">8</div><div class="stat-l">Questões</div></div>
+    <div><div class="stat-n">∞</div><div class="stat-l">Dúvidas IA</div></div>
+  </div>
+</section>
+
+<main class="page">
+
+<!-- 01 TERMOS -->
+<div id="termos" class="sh rv">
+  <div class="sh-icon" style="background:var(--vc)">🔗</div>
+  <div><div class="sh-ey">Capítulo 01</div><div class="sh-ti">Termo Regente e Termo Regido</div></div>
+</div>
+<div class="g2 rv">
+  <div class="card cv">
+    <div class="ctag tv">Quem manda</div>
+    <h3>Termo Regente</h3>
+    <p>A palavra que <strong>exige um complemento</strong> — geralmente o verbo. Ele "puxa" o resto da frase.</p>
+  </div>
+  <div class="card cc">
+    <div class="ctag tc">Quem obedece</div>
+    <h3>Termo Regido</h3>
+    <p>O <strong>complemento exigido</strong> pelo regente. Pra achar: faça a pergunta certa depois do verbo.</p>
+  </div>
+</div>
+<div class="card cgr rv" style="margin-top:.85rem">
+  <h3>📐 Exemplo passo a passo</h3>
+  <p style="font-size:1rem;color:var(--wh);margin:.5rem 0 .9rem;font-family:'Syne',sans-serif;font-weight:700">"João foi à casa da mãe."</p>
+  <ul class="steps">
+    <li><span class="sn" style="background:var(--azc);color:var(--az)">1</span><span><strong>Regente:</strong> "João foi" — o verbo "foi" pede complemento.</span></li>
+    <li><span class="sn" style="background:var(--azc);color:var(--az)">2</span><span><strong>Pergunta:</strong> Foi onde?</span></li>
+    <li><span class="sn" style="background:var(--azc);color:var(--az)">3</span><span><strong>Regido:</strong> "à casa da mãe" — resposta = complemento.</span></li>
+  </ul>
+  <div class="ib tip" style="margin-top:.8rem"><span class="ib-i">✅</span><p>Essa pergunta mental resolve a maioria das questões de regência. Aplica em toda frase.</p></div>
+</div>
+
+<!-- 02 DUPLA REGÊNCIA -->
+<div id="duplaregencia" class="sh rv">
+  <div class="sh-icon" style="background:var(--amc)">⚖️</div>
+  <div><div class="sh-ey">Capítulo 02</div><div class="sh-ti">Verbos com Dupla Regência</div></div>
+</div>
+
+<div class="vs rv">
+  <div class="vs-s"><div class="vs-l" style="color:var(--amb)">ASPIRAR — sem prep.</div><p><strong>Cheirar, sorver</strong><br>Aspirou o perfume.</p></div>
+  <div class="vs-m">VS</div>
+  <div class="vs-s"><div class="vs-l" style="color:var(--vb)">ASPIRAR — com A</div><p><strong>Desejar, almejar</strong><br>Aspiro a um alto cargo.</p></div>
+</div>
+
+<div class="card cc rv">
+  <div class="ctag tc">4 usos</div>
+  <h3>👁️ ASSISTIR</h3>
+  <ul class="steps">
+    <li><span class="sn" style="background:var(--vc);color:var(--vb)">1</span><span><strong>Sem prep. = ajudar.</strong> O médico assistiu o paciente.</span></li>
+    <li><span class="sn" style="background:var(--vc);color:var(--vb)">2</span><span><strong>Com A = ver, presenciar.</strong> Assistimos ao show.</span></li>
+    <li><span class="sn" style="background:var(--vc);color:var(--vb)">3</span><span><strong>Com A = caber, pertencer.</strong> Assiste ao aluno esse direito.</span></li>
+    <li><span class="sn" style="background:var(--vc);color:var(--vb)">4</span><span><strong>Com EM = morar.</strong> Assiste em Maceió.</span></li>
+  </ul>
+</div>
+
+<div class="card cv rv" style="margin-top:.85rem">
+  <div class="ctag tv">Pega clássica</div>
+  <h3>🔁 LEMBRAR e ESQUECER</h3>
+  <p>Tudo depende de ter pronome (me, te, se…) ou não:</p>
+  <div class="g2" style="margin-top:.75rem;gap:.6rem">
+    <div class="ib fact"><span class="ib-i">📌</span><p><strong>Sem pronome → sem prep.</strong><br>Lembrei o nome.</p></div>
+    <div class="ib note"><span class="ib-i">📌</span><p><strong>Com pronome → DE</strong><br>Lembrei-me do nome.</p></div>
+  </div>
+  <div class="ib tip" style="margin-top:.65rem"><span class="ib-i">✅</span><p><strong>Macete:</strong> tem "me", "te" ou "se"? Usa DE. Sem eles, sem preposição.</p></div>
+</div>
+
+<div class="vs rv">
+  <div class="vs-s"><div class="vs-l" style="color:var(--amb)">VISAR — sem prep.</div><p><strong>Mirar / dar visto</strong><br>Visou o alvo. / Visou o doc.</p></div>
+  <div class="vs-m">VS</div>
+  <div class="vs-s"><div class="vs-l" style="color:var(--vb)">VISAR — com A</div><p><strong>Objetivar</strong><br>Visa à aprovação.</p></div>
+</div>
+
+<div class="vs rv">
+  <div class="vs-s"><div class="vs-l" style="color:var(--amb)">QUERER — sem prep.</div><p><strong>Desejar</strong><br>Quero férias.</p></div>
+  <div class="vs-m">VS</div>
+  <div class="vs-s"><div class="vs-l" style="color:var(--vb)">QUERER — com A</div><p><strong>Gostar, estimar</strong><br>Quero muito aos meus amigos.</p></div>
+</div>
+
+<div class="card cr rv">
+  <div class="ctag tr">3 usos</div>
+  <h3>🔀 PROCEDER</h3>
+  <ul class="steps">
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">1</span><span><strong>Com DE = originar-se.</strong> O produto procede da Itália.</span></li>
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">2</span><span><strong>Sem prep. = ter fundamento.</strong> Sua reclamação procede.</span></li>
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">3</span><span><strong>Com A = dar início.</strong> Procedeu à leitura.</span></li>
+  </ul>
+</div>
+
+<div class="g2 rv" style="margin-top:.85rem">
+  <div class="card cgr">
+    <div class="ctag tgr">Verbo</div>
+    <h3>💰 PAGAR</h3>
+    <p>Pagar <strong>algo</strong> (Paguei a conta) · Pagar <strong>a alguém</strong> (Paguei ao vendedor). Coisa = direto; pessoa = indireto.</p>
+  </div>
+  <div class="card cgr">
+    <div class="ctag tgr">Verbo</div>
+    <h3>🤝 PERDOAR</h3>
+    <p>Perdoar <strong>algo</strong> (Perdoei o erro) · Perdoar <strong>a alguém</strong> (Perdoei ao amigo). Mesma lógica do PAGAR.</p>
+  </div>
+</div>
+
+<div class="card cv rv" style="margin-top:.85rem">
+  <div class="ctag tv">Verbo</div>
+  <h3>📣 INFORMAR — dois formatos, mesmo sentido</h3>
+  <div class="g2" style="margin-top:.55rem;gap:.6rem">
+    <div class="ib fact"><span class="ib-i">📌</span><p><strong>Informar algo a alguém</strong><br>Informei o resultado aos alunos.</p></div>
+    <div class="ib note"><span class="ib-i">📌</span><p><strong>Informar alguém de algo</strong><br>Informei os alunos do resultado.</p></div>
+  </div>
+</div>
+
+<div class="card cr rv" style="margin-top:.85rem">
+  <div class="ctag tr">Pegadinha de prova</div>
+  <h3>⚠️ IMPLICAR</h3>
+  <ul class="steps">
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">1</span><span><strong>Sem prep. = causar.</strong> O atraso implicou prejuízos.</span></li>
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">2</span><span><strong>Com EM = envolver.</strong> Foi implicado em fraude.</span></li>
+    <li><span class="sn" style="background:var(--roc);color:var(--ro)">3</span><span><strong>Com COM = antipatizar.</strong> Implica com o irmão.</span></li>
+  </ul>
+  <div class="ib errb" style="margin-top:.65rem"><span class="ib-i">❌</span><p>"O atraso implicou <strong>em</strong> prejuízos" — ERRADO. No sentido de causar, sem preposição.</p></div>
+</div>
+
+<div class="vs rv">
+  <div class="vs-s"><div class="vs-l" style="color:var(--amb)">CUSTAR — algo custa A alguém</div><p>Custou-me entender.</p></div>
+  <div class="vs-m">VS</div>
+  <div class="vs-s"><div class="vs-l" style="color:var(--vb)">CUSTAR — pessoa custa A fazer algo</div><p>Custei a entender.</p></div>
+</div>
+
+<!-- 03 REGÊNCIAS TOP -->
+<div id="regenciastop" class="sh rv">
+  <div class="sh-icon" style="background:var(--amc)">🎯</div>
+  <div><div class="sh-ey">Capítulo 03</div><div class="sh-ti">Regências que Caem Muito</div></div>
+</div>
+<p class="rv" style="font-size:.84rem;color:var(--mu2);margin-bottom:.85rem">Decora a dupla: palavra + preposição certa. É o que mais cai.</p>
+<div class="g4 rv">
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--v),#0d6b3f);color:#fff">DE</div><div class="pbody"><strong>Ávido DE</strong><span>de conhecimento</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--v),#0d6b3f);color:#fff">DE</div><div class="pbody"><strong>Capaz DE</strong><span>de tudo</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--v),#0d6b3f);color:#fff">DE</div><div class="pbody"><strong>Passível DE</strong><span>de punição</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--am),#8a6010);color:#fff">A</div><div class="pbody"><strong>Favorável A</strong><span>a alguém</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--am),#8a6010);color:#fff">A</div><div class="pbody"><strong>Contrário A</strong><span>a algo</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--am),#8a6010);color:#fff">A</div><div class="pbody"><strong>Obediência A</strong><span>a regras</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--ro),#7a3020);color:#fff">À</div><div class="pbody"><strong>Agradável À</strong><span>à alma</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--ro),#7a3020);color:#fff">À</div><div class="pbody"><strong>Essencial À</strong><span>à humanidade</span></div></div>
+  <div class="pcard"><div class="ptop" style="background:linear-gradient(135deg,var(--ro),#7a3020);color:#fff">À</div><div class="pbody"><strong>Prejudicial À</strong><span>à saúde</span></div></div>
+</div>
+<div class="ib note rv" style="margin-top:.75rem"><span class="ib-i">📌</span><p>Agradável <strong>À</strong>, essencial <strong>À</strong>, prejudicial <strong>À</strong> têm crase porque a palavra seguinte é feminina — preposição A + artigo A = À.</p></div>
+
+<!-- 04 NAMORAR / IR -->
+<div id="namorar" class="sh rv">
+  <div class="sh-icon" style="background:var(--roc)">🚫</div>
+  <div><div class="sh-ey">Capítulo 04</div><div class="sh-ti">Macetes: Namorar e Ir</div></div>
+</div>
+<div class="g2 rv">
+  <div class="card cr">
+    <div class="ctag tr">Erro clássico</div>
+    <h3>💔 NAMORAR</h3>
+    <p>Não exige "com".</p>
+    <div class="ib errb" style="margin-top:.65rem"><span class="ib-i">❌</span><p>Namorar <strong>com</strong> alguém.</p></div>
+    <div class="ib tip"><span class="ib-i">✅</span><p>Namorar alguém. (sem preposição)</p></div>
+  </div>
+  <div class="card cv">
+    <div class="ctag tv">Erro clássico</div>
+    <h3>🚶 IR</h3>
+    <p>Quem vai, vai <strong>A</strong> algum lugar.</p>
+    <div class="ib errb" style="margin-top:.65rem"><span class="ib-i">❌</span><p>Fui <strong>no</strong> banheiro. / Fui <strong>na</strong> escola.</p></div>
+    <div class="ib tip"><span class="ib-i">✅</span><p>Fui <strong>ao</strong> banheiro. / Fui <strong>à</strong> escola.</p></div>
+  </div>
+</div>
+
+<!-- 05 CRASE -->
+<div id="crase" class="sh rv">
+  <div class="sh-icon" style="background:var(--vc)">À</div>
+  <div><div class="sh-ey">Capítulo 05</div><div class="sh-ti">Crase</div></div>
+</div>
+<div class="card cgr rv">
+  <h3>➕ O que é crase</h3>
+  <div class="formula">À = A <span style="color:var(--mu2);font-size:.9rem">+</span> A</div>
+  <p style="text-align:center;font-size:.84rem;color:var(--mu2)">preposição A &nbsp;+&nbsp; artigo feminino A &nbsp;=&nbsp; <strong style="color:var(--vb)">À</strong></p>
+  <p style="text-align:center;font-size:.84rem;color:var(--mu2);margin-top:.4rem">Ex: Vou <strong style="color:var(--vb)">à</strong> escola = Vou <em>A</em> + <em>A</em> escola</p>
+</div>
+
+<div class="g2 rv" style="margin-top:.85rem">
+  <div class="card cv">
+    <div class="ctag tv">Macete 1</div>
+    <h3>♂️ Teste do masculino</h3>
+    <p>Troca a palavra feminina por uma masculina equivalente. Se aparecer <strong>"ao"</strong>, tem crase no original.</p>
+    <div class="ib fact" style="margin-top:.65rem"><span class="ib-i">📐</span><p>Vou <strong>à</strong> escola → Vou <strong>ao</strong> mercado ✓ apareceu "ao" → confirma a crase.</p></div>
+  </div>
+  <div class="card cc">
+    <div class="ctag tc">Macete 2</div>
+    <h3>➡️ Teste do "para a"</h3>
+    <p>Troca o "a" por <strong>"para a"</strong>. Se fizer sentido, normalmente há crase.</p>
+    <div class="ib fact" style="margin-top:.65rem"><span class="ib-i">📐</span><p>Fui <strong>para a</strong> escola ✓ funciona → Fui <strong>à</strong> escola (com crase).</p></div>
+  </div>
+</div>
+
+<div class="g2 rv" style="margin-top:.85rem">
+  <div class="card cr">
+    <div class="ctag tr">Sem crase</div>
+    <h3>1️⃣ Antes de "uma"</h3>
+    <div class="ib errb" style="margin-top:.5rem"><span class="ib-i">❌</span><p>Refiro-me <strong>à</strong> uma professora.</p></div>
+    <div class="ib tip"><span class="ib-i">✅</span><p>Refiro-me <strong>a</strong> uma professora.</p></div>
+  </div>
+  <div class="card cr">
+    <div class="ctag tr">Sem crase</div>
+    <h3>2️⃣ Antes de verbo / masculino</h3>
+    <div class="ib errb" style="margin-top:.5rem"><span class="ib-i">❌</span><p>Começou <strong>à</strong> estudar. / Entreguei <strong>à</strong> João.</p></div>
+    <div class="ib tip"><span class="ib-i">✅</span><p>Começou <strong>a</strong> estudar. / Entreguei <strong>a</strong> João.</p></div>
+  </div>
+</div>
+
+<!-- 06 CASO ESPECIAL -->
+<div id="crasespecial" class="sh rv">
+  <div class="sh-icon" style="background:var(--amc)">🔍</div>
+  <div><div class="sh-ey">Capítulo 06</div><div class="sh-ti">Caso Especial: Sentido Geral</div></div>
+</div>
+<div class="card cc rv">
+  <div class="ctag tc">Atenção</div>
+  <h3>🚪 "Proibida a entrada de menores"</h3>
+  <p>Sem crase — expressão de sentido <strong>geral</strong>, não se refere a nenhum lugar específico.</p>
+  <div class="g3" style="margin-top:.85rem;gap:.6rem">
+    <div class="ib fact"><span class="ib-i">📌</span><p>Proibido fumar.</p></div>
+    <div class="ib fact"><span class="ib-i">📌</span><p>Permitida a entrada.</p></div>
+    <div class="ib fact"><span class="ib-i">📌</span><p>Proibida a venda.</p></div>
+  </div>
+  <div class="ib tip" style="margin-top:.65rem"><span class="ib-i">✅</span><p>Avisos genéricos (valem pra qualquer lugar) → sem crase no "a".</p></div>
+</div>
+
+<!-- 07 RESUMO -->
+<div id="ouro" class="sh rv">
+  <div class="sh-icon" style="background:var(--amc)">🏆</div>
+  <div><div class="sh-ey">Resumo final</div><div class="sh-ti">Macetes de Ouro</div></div>
+</div>
+<div class="rv">
+  <div class="law"><div class="law-n">Assistir (ver) · Aspirar (desejar) · Visar (objetivar) · Querer (gostar) · Ir</div><p>→ todos levam <strong>A</strong>. Ex: Assisti ao filme · Aspiro a um cargo · Visa à aprovação · Quero aos amigos · Fui à escola.</p></div>
+  <div class="law"><div class="law-n">Lembrar-se · Esquecer-se</div><p>→ levam <strong>DE</strong>. Ex: Lembrei-me do nome. (sem pronome = sem prep.: Lembrei o nome)</p></div>
+  <div class="law"><div class="law-n">Implicar (causar)</div><p>→ <strong>sem preposição</strong>. Ex: O atraso implicou prejuízos. ❌ "implicou em prejuízos"</p></div>
+  <div class="law"><div class="law-n">Ávido · Capaz · Passível</div><p>→ todos com <strong>DE</strong>. Ex: Ávido de conhecimento · capaz de tudo · passível de punição.</p></div>
+  <div class="law"><div class="law-n">Namorar</div><p>→ <strong>sem preposição</strong>. Ex: Namorou a menina. ❌ "namorou com a menina"</p></div>
+  <div class="law"><div class="law-n">Teste da crase</div><p>Se trocar por masculino aparecer "ao" → tem crase. Se "para a" funcionar → tem crase.</p></div>
+</div>
+
+<!-- QUIZ -->
+<div id="quiz" class="sh rv">
+  <div class="sh-icon" style="background:var(--amc)">🧠</div>
+  <div><div class="sh-ey">Teste final</div><div class="sh-ti">Quiz — Vai tirar 10?</div></div>
+</div>
+<div class="quiz rv" id="quiz-box">
+  <div class="qprog"><div class="qbar" id="qbar"></div></div>
+  <div class="qhead"><span class="qq" id="qq">Carregando...</span><span class="qct" id="qct">1/8</span></div>
+  <div class="qopts" id="qopts"></div>
+  <div class="qfb" id="qfb"></div>
+  <button class="qnxt" id="qnxt" onclick="nextQ()">Próxima →</button>
+  <div class="qscore" id="qsc"></div>
+</div>
+
+</main>
+
+<footer>
+  <div class="footer-logo">pxl4r1z3d</div>
+  <div class="footer-sub">Guia de Regência e Crase · Português · 9º Ano</div>
+  <div class="footer-sub" style="margin-top:.2rem">Criado por <strong style="color:var(--vb)">pxl4r1z3d</strong> com assistência de IA · 2025</div>
+  <div class="ib note" style="max-width:400px;margin:1rem auto 0;text-align:left">
+    <span class="ib-i">✦</span>
+    <p><strong>Made by Eduardo</strong> — material PCG 9º ano, avaliação 16/06.</p>
+  </div>
+  <div class="footer-made">Feito com 💚 pra galera que quer tirar 10</div>
+</footer>
+
+<button class="chat-fab" id="chatFab" onclick="toggleChat()">
+  <span class="fab-icon">✦</span>
+  <span class="fab-close">✕</span>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <div class="chat-avatar">✦</div>
+    <div class="chat-hinfo"><strong>Assistente de Português</strong><span>● online</span></div>
+    <div class="chat-dot"></div>
+  </div>
+  <div class="chat-msgs" id="chatMsgs">
+    <div class="msg bot">Oi! 👋 Pode perguntar sobre regência, crase, verbos de dupla regência e tudo do guia. Vou te ajudar a tirar 10! ✦</div>
+  </div>
+  <div class="chat-sug-wrap" id="chatSugs">
+    <button class="sug" onclick="sendSug(this)">O que é termo regente?</button>
+    <button class="sug" onclick="sendSug(this)">Diferença de assistir</button>
+    <button class="sug" onclick="sendSug(this)">Como descobrir a crase?</button>
+    <button class="sug" onclick="sendSug(this)">Lembrar ou lembrar-se?</button>
+  </div>
+  <div class="chat-inp-row">
+    <input class="chat-inp" id="chatInp" type="text" placeholder="Pergunte sobre regência e crase..." onkeydown="if(event.key==='Enter')sendMsg()">
+    <button class="chat-send" onclick="sendMsg()"><svg viewBox="0 0 24 24"><path d="M2 21l21-9L2 3v7l15 2-15 2v7z"/></svg></button>
+  </div>
+  <div class="chat-pw">✦ Assistente de Português · pxl4r1z3d</div>
+</div>
+
+<script>
+/* PARTICLE BG */
+(()=>{
+  const c=document.getElementById('bg-canvas');
+  const ctx=c.getContext('2d');
+  let W,H,pts=[];
+  const resize=()=>{W=c.width=innerWidth;H=c.height=innerHeight;init()};
+  const init=()=>{
+    pts=[];
+    const n=Math.floor(W*H/11000);
+    for(let i=0;i<n;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*.9+.2,a:Math.random()*.6,da:(Math.random()-.5)*.003,vx:(Math.random()-.5)*.08,vy:(Math.random()-.5)*.08});
+  };
+  const draw=()=>{
+    ctx.clearRect(0,0,W,H);
+    const g=ctx.createRadialGradient(W*.5,H*.1,0,W*.5,H*.5,H*.65);
+    g.addColorStop(0,'rgba(31,170,107,.04)');g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,W,H);
+    pts.forEach(p=>{
+      p.a+=p.da;if(p.a>0.6||p.a<0)p.da*=-1;
+      p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=`rgba(180,220,195,${p.a})`;ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  };
+  addEventListener('resize',resize);resize();draw();
+})();
+
+/* SCROLL REVEAL */
+const rvEls=document.querySelectorAll('.rv');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting){setTimeout(()=>e.target.classList.add('on'),i*45);obs.unobserve(e.target);}});
+},{threshold:.07});
+rvEls.forEach(e=>obs.observe(e));
+
+/* QUIZ */
+const qs=[
+  {q:"Em 'João foi à casa da mãe', qual é o termo regido?",o:["João","foi","à casa da mãe","da mãe"],a:2,e:"O termo regido é o complemento exigido pelo regente. 'João foi' pergunta 'onde?' e a resposta (o regido) é 'à casa da mãe'."},
+  {q:"'O médico assistiu o paciente' — qual o sentido do verbo assistir aqui?",o:["Ver, presenciar","Ajudar","Morar","Pertencer"],a:1,e:"Assistir SEM preposição = ajudar. Com A = ver/presenciar. Com EM = morar."},
+  {q:"Qual frase está CORRETA?",o:["Esqueci-me de o nome","Esqueci o nome","Esqueci o de nome","Esqueci-me o nome"],a:1,e:"Sem pronome (me/te/se), não usa preposição: 'Esqueci o nome'. Com pronome seria 'Esqueci-ME DO nome'."},
+  {q:"'O atraso ___ prejuízos para a empresa' (sentido de causar) — complete:",o:["implicou em","implicou com","implicou","implicou a"],a:2,e:"Implicar no sentido de 'causar' NÃO leva preposição: 'O atraso implicou prejuízos'. 'Implicou em' é erro clássico de prova."},
+  {q:"Qual frase usa 'namorar' corretamente?",o:["Ela namora com o Pedro","Ela namora o Pedro","Ela namora ao Pedro","Ela namora de Pedro"],a:1,e:"Namorar não exige 'com'. O correto é 'namorar alguém', sem preposição."},
+  {q:"Qual frase está correta?",o:["Fui no banheiro","Fui ao banheiro","Fui em o banheiro","Fui o banheiro"],a:1,e:"Quem vai, vai A algum lugar: 'Fui ao banheiro' (a + o = ao). 'Fui no/na' é erro."},
+  {q:"Pelo teste do 'para a': 'Vou ___ praia'. 'Para a praia' funciona. Logo:",o:["Vou a praia (sem crase)","Vou à praia (com crase)","Vou na praia","Vou de praia"],a:1,e:"Se 'para a' encaixa, normalmente há crase: 'Vou à praia'."},
+  {q:"'É proibida a entrada de menores' — por que NÃO há crase em 'a entrada'?",o:["'Entrada' é masculina","É antes de verbo","A expressão tem sentido geral, não específico","'Entrada' está no plural"],a:2,e:"Expressões de sentido geral (avisos, placas) não levam crase: 'Proibida a entrada', 'Proibido fumar', 'Permitida a entrada'."},
+];
+let qc=0,sc=0,ans=false;
+function renderQ(){
+  const q=qs[qc];
+  document.getElementById('qq').textContent=q.q;
+  document.getElementById('qct').textContent=`${qc+1}/${qs.length}`;
+  document.getElementById('qbar').style.width=`${(qc/qs.length)*100}%`;
+  document.getElementById('qfb').className='qfb';
+  document.getElementById('qnxt').className='qnxt';
+  ans=false;
+  const o=document.getElementById('qopts');o.innerHTML='';
+  q.o.forEach((t,i)=>{
+    const b=document.createElement('button');b.className='qopt';b.textContent=t;
+    b.onclick=()=>pick(i,b);o.appendChild(b);
+  });
+}
+function pick(i,btn){
+  if(ans)return;ans=true;
+  const q=qs[qc];const fb=document.getElementById('qfb');
+  document.querySelectorAll('.qopt').forEach((b,j)=>{
+    if(j===q.a)b.classList.add('ok');else if(j===i)b.classList.add('err');
+    b.disabled=true;
+  });
+  if(i===q.a){sc++;fb.className='qfb ok on';fb.textContent='✓ Correto! '+q.e;}
+  else{fb.className='qfb err on';fb.textContent='✗ Errado. '+q.e;}
+  document.getElementById('qnxt').className='qnxt on';
+}
+function nextQ(){
+  qc++;
+  if(qc<qs.length){renderQ();}
+  else{
+    document.getElementById('qbar').style.width='100%';
+    document.getElementById('qq').textContent='Quiz finalizado!';
+    document.getElementById('qopts').innerHTML='';
+    document.getElementById('qfb').className='qfb';
+    document.getElementById('qnxt').className='qnxt';
+    const p=Math.round((sc/qs.length)*100);
+    const s=document.getElementById('qsc');
+    s.textContent=`${p>=88?'🏆':p>=62?'📚':'💪'} ${sc}/${qs.length} corretas (${p}%) ${p>=88?'— Incrível!':p>=62?'— Bom trabalho!':'— Continue estudando!'}`;
+    s.className='qscore on';
+  }
+}
+renderQ();
+
+/* CHAT */
+let chatOpen=false;
+function toggleChat(){
+  chatOpen=!chatOpen;
+  document.getElementById('chatPanel').classList.toggle('open',chatOpen);
+  document.getElementById('chatFab').classList.toggle('open',chatOpen);
+  if(chatOpen)setTimeout(()=>document.getElementById('chatInp').focus(),300);
+}
+function sendSug(btn){
+  document.getElementById('chatSugs').style.display='none';
+  document.getElementById('chatInp').value=btn.textContent;
+  sendMsg();
+}
+const KB=[
+  {k:['termo regente','regente'],r:"<strong>Termo regente</strong> é a palavra que exige um complemento (geralmente o verbo). Ex: em 'João foi à casa da mãe', 'foi' é o regente — faz a pergunta: foi <strong>onde</strong>? ✦"},
+  {k:['termo regido','regido'],r:"<strong>Termo regido</strong> é o complemento exigido pelo regente. Ex: 'à casa da mãe' é o regido — é a resposta da pergunta 'foi onde?'. Regente manda, regido obedece! 🔗"},
+  {k:['aspirar'],r:"<strong>ASPIRAR</strong>: sem prep. = cheirar (Aspirou o perfume) · com A = desejar (Aspiro a um alto cargo). O sentido muda completamente. ✦"},
+  {k:['assistir'],r:"<strong>ASSISTIR</strong> tem 4 usos: sem prep. = ajudar (O médico assistiu o paciente) · com A = ver/presenciar (Assistimos ao show) · com A = caber (Assiste ao aluno esse direito) · com EM = morar (Assiste em Maceió). 👁️"},
+  {k:['lembrar','esquecer','lembrei','esqueci'],r:"<strong>LEMBRAR / ESQUECER</strong>: sem pronome = sem prep. (Lembrei o nome). Com pronome = DE (Lembrei-me do nome). Macete: tem 'me', 'te' ou 'se' → usa DE! 🔁"},
+  {k:['visar'],r:"<strong>VISAR</strong>: sem prep. = mirar/dar visto (Visou o alvo · Visou o documento). Com A = objetivar (Visa à aprovação). ✦"},
+  {k:['querer'],r:"<strong>QUERER</strong>: sem prep. = desejar (Quero férias). Com A = gostar/estimar (Quero muito aos meus amigos). ✦"},
+  {k:['proceder'],r:"<strong>PROCEDER</strong>: com DE = originar-se (O produto procede da Itália). Sem prep. = ter fundamento (Sua reclamação procede). Com A = dar início (Procedeu à leitura). 🔀"},
+  {k:['pagar','perdoar'],r:"<strong>PAGAR / PERDOAR</strong>: pagar/perdoar ALGO = objeto direto (Paguei a conta / Perdoei o erro). Pagar/perdoar A ALGUÉM = objeto indireto (Paguei ao vendedor / Perdoei ao amigo). 💰"},
+  {k:['informar'],r:"<strong>INFORMAR</strong> aceita duas estruturas: 'informar algo A alguém' (Informei o resultado aos alunos) ou 'informar alguém DE algo' (Informei os alunos do resultado). As duas estão certas! 📣"},
+  {k:['implicar'],r:"<strong>IMPLICAR</strong>: sem prep. = causar (O atraso implicou prejuízos — NUNCA 'implicou EM'!). Com EM = envolver (Foi implicado em fraude). Com COM = antipatizar (Implica com o irmão). ⚠️"},
+  {k:['custar'],r:"<strong>CUSTAR</strong>: algo custa A alguém (Custou-me entender). Pessoa custa A fazer algo (Custei a entender). O sujeito muda! ✦"},
+  {k:['ávido','avido','capaz','passível','passivel','favorável','favoravel','contrário','contrario','obediência','obediencia','agradável','agradavel','essencial','prejudicial'],r:"As <strong>regências que mais caem</strong>: ávido DE, capaz DE, passível DE · favorável A, contrário A, obediência A · agradável À, essencial À, prejudicial À (crase porque a palavra seguinte é feminina). 🎯"},
+  {k:['namorar'],r:"<strong>NAMORAR</strong> não exige 'com'! ❌ Namorou com a menina. ✅ Namorou a menina. 💔"},
+  {k:['fui no','fui na','verbo ir','ir ao','ir a'],r:"<strong>IR</strong>: quem vai, vai A algum lugar. ❌ Fui no / na. ✅ Fui ao banheiro (a+o=ao) · Fui à escola (a+a=à). 🚶"},
+  {k:['crase','acento grave'],r:"<strong>Crase</strong> = preposição A + artigo feminino A = À. Fórmula: A + A = À. Ex: Vou à escola. 🎩"},
+  {k:['teste do masculino','macete de crase','macetes de crase'],r:"<strong>Teste do masculino:</strong> troca por palavra masculina equivalente. Se aparecer 'ao', tem crase no original! Ex: 'Vou à escola' → 'Vou ao mercado' → apareceu 'ao' → crase confirmada. ✅"},
+  {k:['teste do para a','para a'],r:"<strong>Teste 'para a':</strong> troca 'a' por 'para a'. Se funcionar, há crase. Ex: 'Fui para a escola' ✓ → 'Fui à escola'. ➡️"},
+  {k:['antes de uma'],r:"<strong>Sem crase antes de 'uma'</strong>. Ex: Refiro-me a uma professora. (sem acento) 1️⃣"},
+  {k:['antes de verbo','crase antes de verbo'],r:"<strong>Sem crase antes de verbo</strong>. Ex: Começou a estudar. (sem acento) 2️⃣"},
+  {k:['palavra masculina'],r:"<strong>Sem crase antes de palavra masculina</strong>. Ex: Entreguei a João. (sem acento) 2️⃣"},
+  {k:['proibida a entrada','sentido geral','caso especial','proibido fumar','permitida a entrada'],r:"<strong>Caso especial:</strong> 'Proibida a entrada de menores' — sem crase, pois a expressão tem sentido geral (aviso genérico). Mesma lógica: Proibido fumar · Permitida a entrada · Proibida a venda. 🚪"},
+];
+const FALLBACKS=[
+  "Esse assistente é especializado em Regência e Crase (conteúdo da PCG, 9º ano). Pergunta sobre term regente/regido, verbos com dupla regência ou macetes de crase! ✦",
+  "Hmm, não consigo responder isso — mas pode perguntar qualquer coisa sobre Regência, Crase ou os verbos do guia! 😅",
+];
+function findAnswer(txt){
+  const t=txt.toLowerCase();
+  for(const item of KB)for(const kw of item.k)if(t.includes(kw))return item.r;
+  return null;
+}
+function sendMsg(){
+  const inp=document.getElementById('chatInp');
+  const txt=inp.value.trim();if(!txt)return;inp.value='';
+  appendMsg(txt,'user');
+  const typing=appendMsg('digitando…','bot typing');
+  setTimeout(()=>{
+    typing.remove();
+    appendMsg(findAnswer(txt)||FALLBACKS[Math.floor(Math.random()*FALLBACKS.length)],'bot');
+  },480+Math.random()*350);
+}
+function appendMsg(text,cls){
+  const msgs=document.getElementById('chatMsgs');
+  const d=document.createElement('div');d.className='msg '+cls;d.innerHTML=text;
+  msgs.appendChild(d);msgs.scrollTop=msgs.scrollHeight;return d;
+}
+</script>
+</body>
+</html>
+HTMLEOF
+echo "done"
